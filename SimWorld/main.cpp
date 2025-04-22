@@ -1,22 +1,24 @@
 #include <SFML/Graphics.hpp>
+#include <Box2D/Box2D.h>
+#include <World.h>
+
+const float SCALE = 30.f; // Масштаб для перевода из метров Box2D в пиксели SFML
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(sf::Vector2u(800, 600)), "SimWorld");
+    sf::RenderWindow window(sf::VideoMode({ 1000, 800 }), "Ecosystem");
+    World world(window);  // Создаём мир
 
+    sf::Clock clock;
+    window.setFramerateLimit(60);
     while (window.isOpen()) {
-        // Объявляем объект события
-        sf::Event event();
-        // Обрабатываем события
-        while (window.pollEvent()) {
-            // Проверяем тип события через метод type()
-            if (event.type() == sf::Event::Type::Closed) {
+        while (const std::optional event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>())
                 window.close();
-            }
         }
 
-        window.clear();
-        window.display();
+        float deltaTime = clock.restart().asSeconds();
+        world.update(deltaTime);  // Обновляем логику
+        world.render();           // Рендерим
     }
-
     return 0;
 }
