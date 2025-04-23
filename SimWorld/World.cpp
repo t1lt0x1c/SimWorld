@@ -1,4 +1,4 @@
-#include <World.h>
+#include "World.h"
 
 World::World(sf::RenderWindow& window)
     : window(window), physicsWorld(b2Vec2(0, 0)) {
@@ -44,15 +44,14 @@ void World::update(float deltaTime) {
     // Удаление мёртвых сущностей
     auto it = entities.begin();
     while (it != entities.end()) {
+        if(!(*it)->isDead()) (*it)->update(deltaTime);
         if ((*it)->isDead()) {
             delete* it;
             it = entities.erase(it);
             countEntitys[typeid(*it)]--;
+            break;
         }
-        else {
-            (*it)->update(deltaTime);
-            ++it;
-        }
+        ++it;
     }
 }
 
