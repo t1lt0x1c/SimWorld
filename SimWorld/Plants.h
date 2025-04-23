@@ -33,7 +33,7 @@ public:
 
     void update(float deltaTime) override {
         UpdateAge();
-        if (GetAge() == max_age) {
+        if (GetAge() >= max_age) {
             killEntity();
         }
     }
