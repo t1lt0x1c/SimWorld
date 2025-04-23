@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Entity.h>
-#include <Plants.h>
+#include "Entity.h"
+#include "Plants.h"
 #include <unordered_map>
 #include <typeindex>  // Для std::type_index
 #include <typeinfo>   // Для typeid

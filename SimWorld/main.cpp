@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <Box2D/Box2D.h>
-#include <World.h>
+#include "World.h"
 
 const float SCALE = 30.f; // Масштаб для перевода из метров Box2D в пиксели SFML
 

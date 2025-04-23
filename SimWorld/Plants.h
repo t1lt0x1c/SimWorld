@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Entity.h>
-#include <CustomRandom.h>
+#include "Entity.h"
+#include "CustomRandom.h"
 
 class Plant : public Entity {
 public:

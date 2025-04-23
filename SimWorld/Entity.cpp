@@ -1,4 +1,4 @@
-#include <Entity.h>
+#include "Entity.h"
 
 const bool Entity::isDead() const {
 	return isdead;
