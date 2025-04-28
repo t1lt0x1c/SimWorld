@@ -64,5 +64,5 @@ void World::render() {
 }
 
 int World::countEntitys_(std::type_index id) {
-    return countEntitys[typeid(id)];
+    return countEntitys[id];
 }
