@@ -6,6 +6,7 @@ World::World(sf::RenderWindow& window)
     //createWorldBounds(); 
     // Первичная генерация
     spawnInitialEntities();
+    spawnAnimal(500, 400);
 }
 
 void World::spawnInitialEntities() {
@@ -23,6 +24,16 @@ void World::spawnPlant(float x, float y) {
     float meterY = y / 30.0f;
 
     Plant* plant = new Plant(physicsWorld, meterX, meterY);
+    entities.push_back(plant);
+    countEntitys[typeid(plant)]++;
+}
+
+void World::spawnAnimal(float x, float y) {
+    // Переводим пиксели в метры (Box2D)
+    float meterX = x / 30.0f;
+    float meterY = y / 30.0f;
+
+    Animal* plant = new Animal(physicsWorld, meterX, meterY);
     entities.push_back(plant);
     countEntitys[typeid(plant)]++;
 }

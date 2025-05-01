@@ -2,6 +2,7 @@
 
 #include "Entity.h"
 #include "Plants.h"
+#include "Animal.h"
 #include <unordered_map>
 #include <typeindex>  // Для std::type_index
 #include <typeinfo>   // Для typeid
@@ -22,5 +23,6 @@ public:
     void render();                           // Отрисовка
     void spawnInitialEntities();              // Стартовая генерация
     void spawnPlant(float x, float y);       // Создание растения
+    void spawnAnimal(float x, float y);
     int countEntitys_(std::type_index id);
 };

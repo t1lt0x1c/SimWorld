@@ -2,13 +2,10 @@
 #include "Entity.h"
 
 class Animal : public Entity {
+public:
 	Animal(b2World& world, float x, float y);
 
 	void update(float deltaTime) override;
-
-	//Движение
-	void MoveForward(double force = 3);
-	void Rotation(double rad);
 
 	//Здоровье
 	double GetHealth() const;
@@ -22,11 +19,20 @@ class Animal : public Entity {
 
 	void UpdateAge();
 
+	void render(sf::RenderWindow& window) override {
+		// Синхронизация позиции с Box2D
+		b2Vec2 pos = body->GetPosition();
+		visual.setPosition({ pos.x * PIXELS_PER_METER, pos.y * PIXELS_PER_METER });
+		window.draw(visual);
+	}
+
 private:
 	double max_health;
 	double health;
 	double satiety;
 	double saitety_on_step;
+
+	sf::ConvexShape visual;
 private:
 	bool CheckDead();
 };
