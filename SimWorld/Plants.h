@@ -37,4 +37,13 @@ public:
             killEntity();
         }
     }
+
+    void render(sf::RenderWindow& window) override {
+        // Синхронизация позиции с Box2D
+        b2Vec2 pos = body->GetPosition();
+        visual.setPosition({ pos.x * PIXELS_PER_METER, pos.y * PIXELS_PER_METER });
+        window.draw(visual);
+    }
+private:
+    sf::CircleShape visual;
 };
